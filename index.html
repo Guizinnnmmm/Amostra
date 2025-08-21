@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amostra Literária com Emojis</title>
+  <style>
+    /* ===== Reset e Configuração Básica ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+      color: #333;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #fff;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    }
+
+    /* ===== Textarea ===== */
+    textarea {
+      width: 80%;
+      height: 80px;
+      font-size: 20px;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 15px;
+      border: none;
+      outline: none;
+      resize: none;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    textarea:focus {
+      transform: scale(1.02);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+    }
+
+    /* ===== Botões ===== */
+    .btn {
+      padding: 15px 30px;
+      margin: 10px 10px 20px 10px;
+      border: none;
+      border-radius: 15px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-weight: bold;
+    }
+
+    .btn-limpar {
+      background: #ff4d4d;
+      color: #fff;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+
+    .btn-limpar:hover {
+      background: #e60000;
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    }
+
+    .btn-converter {
+      background: #4d94ff;
+      color: #fff;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+
+    .btn-converter:hover {
+      background: #005ce6;
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    }
+
+    /* ===== Container de Cards ===== */
+    .emoji-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .emoji-card {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .emoji-card:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+    }
+
+    /* ===== Cores variadas para cada card ===== */
+    .card-A { background: #ffd700; color: #000; }
+    .card-B { background: #FF6347; color: #fff; }
+    .card-C { background: #40E0D0; color: #000; } 
+    .card-D { background: #ADFF2F; color: #000; }
+    .card-E { background: #FF69B4; color: #fff; }
+    .card-F { background: #BA55D3; color: #fff; }
+    .card-G { background: #FF8C00; color: #fff; }
+    .card-H { background: #00CED1; color: #000; }
+    .card-I { background: #FF1493; color: #fff; }
+    .card-J { background: #1E90FF; color: #fff; }
+    .card-K { background: #32CD32; color: #000; }
+    .card-L { background: #FFA500; color: #000; }
+    .card-M { background: #FF4500; color: #fff; }
+    .card-N { background: #7B68EE; color: #fff; }
+    .card-O { background: #00FA9A; color: #000; }
+    .card-P { background: #FF00FF; color: #fff; }
+    .card-Q { background: #00BFFF; color: #fff; }
+    .card-R { background: #FFDAB9; color: #000; }
+    .card-S { background: #DC143C; color: #fff; }
+    .card-T { background: #00FF7F; color: #000; }
+    .card-U { background: #FF69B4; color: #fff; }
+    .card-V { background: #BA55D3; color: #fff; }
+    .card-W { background: #7FFF00; color: #000; }
+    .card-X { background: #FF4500; color: #fff; }
+    .card-Y { background: #1E90FF; color: #fff; }
+    .card-Z { background: #FFD700; color: #000; }
+    .card-Ç { background: #40E0D0; color: #000; }
+    .card-Á { background: #FF69B4; color: #fff; }
+    .card-Ã { background: #32CD32; color: #000; }
+    .card-Â { background: #FF8C00; color: #fff; }
+    .card-À { background: #00CED1; color: #000; }
+    .card-É { background: #FF1493; color: #fff; }
+    .card-Ê { background: #1E90FF; color: #fff; }
+    .card-Í { background: #BA55D3; color: #fff; }
+    .card-Ó { background: #FF4500; color: #fff; }
+    .card-Ô { background: #7FFF00; color: #000; }
+    .card-Õ { background: #FFD700; color: #000; }
+    .card-Ú { background: #FF6347; color: #fff; }
+    .card-Ü { background: #40E0D0; color: #000; }
+
+    /* ===== Bloco de Resultado ===== */
+    #resultado {
+      margin-top: 30px;
+      padding: 20px;
+      border-radius: 15px;
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      min-height: 50px;
+      font-size: 24px;
+      font-weight: bold;
+      word-wrap: break-word;
+    }
+
+    /* ===== Opções de Separador ===== */
+    .opcoes-separador {
+      margin-bottom: 20px;
+      font-size: 18px;
+      color: #fff;
+    }
+
+    .opcoes-separador input {
+      margin-right: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <a href="Girias.html">Girias</a>
+</header>
+  <h1>🔡 Amostra Literária com Emojis</h1>
+
+  <textarea id="emojiInput" placeholder="Digite ou clique nos cards..."></textarea><br>
+
+  <div class="opcoes-separador">
+    <label>
+      <input type="radio" name="separador" value="/" checked> Usar "/" para espaço
+    </label>
+    <label style="margin-left:15px;">
+      <input type="radio" name="separador" value=" "> Usar espaço normal
+    </label>
+  </div>
+
+  <button class="btn btn-limpar" onclick="limparTexto()">🧹 Limpar</button>
+  <button class="btn btn-converter" onclick="converterEmojis()">⚡ Converter</button>
+
+  <div class="emoji-container" id="emojiContainer"></div>
+
+  <div id="resultado"></div>
+
+  <script>
+    // ===== Map de Letras para Emojis =====
+    const emojiMap = {
+      'A': '😀','B': '😎','C': '😂','D': '😁','E': '😍','F': '😅','G': '🤣','H': '😉',
+      'I': '😘','J': '🤩','K': '😏','L': '😋','M': '🥰','N': '😒','O': '😢','P': '😭',
+      'Q': '🤔','R': '😴','S': '😡','T': '😱','U': '😜','V': '🤗','W': '🥳','X': '🤤',
+      'Y': '😇','Z': '🤯','Ç': '🌀','Á': '🌟','Ã': '✨','Â': '🔥','À': '🌈','É': '⚡',
+      'Ê': '💫','Í': '🌹','Ó': '🍀','Ô': '🍎','Õ': '🌊','Ú': '🌞','Ü': '⭐'
+    };
+
+    const container = document.getElementById("emojiContainer");
+    const input = document.getElementById("emojiInput");
+    const resultado = document.getElementById("resultado");
+
+    // ===== Criar Cards =====
+    for (const letra in emojiMap) {
+      const card = document.createElement("div");
+      card.className = `emoji-card card-${letra}`;
+      card.innerHTML = `${emojiMap[letra]}<br>${letra}`;
+      card.onclick = () => {
+        input.value += letra;
+      };
+      container.appendChild(card);
+    }
+
+    // ===== Limpar Textarea =====
+    function limparTexto() {
+      input.value = "";
+      resultado.innerHTML = "";
+    }
+
+    // ===== Converter Emojis =====
+    function converterEmojis() {
+      const texto = input.value.toUpperCase();
+      let mensagem = "";
+
+      // Pega o separador escolhido
+      const separador = document.querySelector('input[name="separador"]:checked').value;
+
+      for (let i = 0; i < texto.length; i++) {
+        const char = texto[i];
+
+        if (char === " ") {
+          mensagem += separador + " ";
+        } else if (emojiMap[char]) {
+          mensagem += emojiMap[char] + " ";
+        } else {
+          mensagem += char;
+        }
+      }
+
+      resultado.innerHTML = mensagem.trim();
+    }
+  </script>
+
+</body>
+</html>
